@@ -13,22 +13,11 @@ export default async function handler(req, res) {
       }
     );
 
-    const data = await response.json();
+    const data = await response.text();
 
-    const resultados = data.map((item) => ({
-      numero: item.roll,
-      cor:
-        item.color === 0
-          ? "Branco"
-          : item.color === 1
-          ? "Vermelho"
-          : "Preto",
-      color: item.color,
-    }));
-
-    res.status(200).json(resultados);
+    return res.status(200).send(data);
   } catch (e) {
-    res.status(500).json({
+    return res.status(500).json({
       erro: e.message,
     });
   }
