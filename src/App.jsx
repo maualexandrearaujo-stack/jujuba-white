@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useState } from "react";
+const API_HISTORY_URL = "https://blaze.com/api/roulette_games/history";
+const API_RECENT_URL = "https://blaze.com/api/roulette_games/recent";
 
-const API_HISTORY_URL = "http://localhost:3001/api/history";
-const API_RECENT_URL = "http://localhost:3001/api/recent";
 
 const corPorCodigo = (color) => {
   if (Number(color) === 0) return "⚪ Branco";
