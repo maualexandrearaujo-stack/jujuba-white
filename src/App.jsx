@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-const API_HISTORY_URL = "https://blaze.com/api/roulette_games/history";
+const API_HISTORY_URL =  "/api/history";
 const API_RECENT_URL = "https://blaze.com/api/roulette_games/recent" ;
 
 
