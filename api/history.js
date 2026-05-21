@@ -1,15 +1,15 @@
 export default async function handler(req, res) {
   try {
     const response = await fetch(
-      "https://blaze.com/api/roulette_games/recent"
+      "https://www.tipminer.com/br/historico/blaze/double"
     );
 
-    const data = await response.json();
+    const html = await response.text();
 
-    res.status(200).json(data);
+    res.status(200).send(html);
   } catch (e) {
     res.status(500).json({
-      error: "erro ao buscar blaze",
+      error: "erro ao buscar tipminer",
     });
   }
 }
