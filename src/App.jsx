@@ -486,7 +486,7 @@ export default function App() {
 
       setStatus(`On-line • ${formatado.length} resultados • Último: ${ultimo?.numero ?? "—"} às ${ultimo?.hora ?? "—"} • Auto ${auto ? "ON" : "OFF"}`);
     } catch (e) {
-      setStatus(`Erro ao conectar: ${e.message}. Confira node server.js na porta 3001.`);
+      setStatus("Conectando ao radar online...")
     }
   };
 
