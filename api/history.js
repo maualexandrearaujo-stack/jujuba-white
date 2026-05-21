@@ -1,27 +1,33 @@
 export default async function handler(req, res) {
   try {
     const response = await fetch(
-      "https://blaze.com/api/roulette_games/recent"
+      "https://www.tipminer.com/br/historico/blaze/double"
     );
 
-    const data = await response.json();
+    const html = await response.text();
 
-    const formatado = data.map((item) => ({
-      numero: item.roll,
-      cor:
-        item.color === 0
-          ? "Branco"
-          : item.color === 1
-          ? "Vermelho"
-          : "Preto",
-      color: item.color,
-    }));
+    const resultados = [];
 
-    res.status(200).json(formatado);
+    const regex = /(\d{1,2})\s*(vermelho|preto|branco)/gi;
+
+    let match;
+
+    while ((match = regex.exec(html)) !== null) {
+      resultados.push({
+        numero: Number(match[1]),
+        cor:
+          match[2].toLowerCase() === "vermelho"
+            ? "Vermelho"
+            : match[2].toLowerCase() === "preto"
+            ? "Preto"
+            : "Branco",
+      });
+    }
+
+    res.status(200).json(resultados.slice(0, 100));
   } catch (e) {
     res.status(500).json({
-      erro: "erro ao buscar blaze",
-      detalhe: e.message,
+      erro: e.message,
     });
   }
 }
